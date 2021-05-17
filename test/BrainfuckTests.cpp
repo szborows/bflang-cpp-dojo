@@ -54,7 +54,7 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
 
     SECTION( "overflow test" ) {
         Code code{convertToString(",+.")};
-        Input input{convertToString("\255")};
+        Input input{convertToString("\377")};
         REQUIRE( interpreter.interpret(code, input) == convertToString("todo") );
     }
 
