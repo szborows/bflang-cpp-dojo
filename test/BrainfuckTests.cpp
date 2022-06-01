@@ -55,13 +55,13 @@ TEST_CASE( "Brainfuck interpreter test cases", "[interp]" ) {
     SECTION( "overflow test" ) {
         Code code{convertToString(",+.")};
         Input input{convertToString("\377")};
-        REQUIRE( interpreter.interpret(code, input) == convertToString("todo") );
+        REQUIRE( interpreter.interpret(code, input) == convertToString("\0") );
     }
 
     SECTION( "underflow test" ) {
         Code code{convertToString(",-.")};
         Input input{convertToString("\0")};
-        REQUIRE( interpreter.interpret(code, input) == convertToString("todo") );
+        REQUIRE( interpreter.interpret(code, input) == convertToString("\377") );
     }
 
     SECTION( "comments are ignored" ) {
